@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextPane;
+import javax.swing.table.TableColumn;
+
 import java.awt.BorderLayout;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -17,20 +19,23 @@ import javax.swing.JTabbedPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JDesktopPane;
 import java.awt.Color;
 import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import java.awt.event.ActionEvent;
+import javax.swing.JTable;
 
-public class Vista {
+public class Listado {
 
 	private JFrame frame;
 	private JTextField txtTexto;
-	private JTextField txtTexto_1;
-	private JTextPane txtpnAutor;
-	private JTextField txtTexto_2;
-	private JCheckBox chckbxNewCheckBox_1;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -39,7 +44,7 @@ public class Vista {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Vista window = new Vista();
+					Listado window = new Listado();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,7 +56,7 @@ public class Vista {
 	/**
 	 * Create the application.
 	 */
-	public Vista() {
+	public Listado() {
 		initialize();
 	}
 
@@ -63,51 +68,27 @@ public class Vista {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.X_AXIS));
-		
+
 		JDesktopPane desktopPane = new JDesktopPane();
 		desktopPane.setBackground(Color.WHITE);
 		frame.getContentPane().add(desktopPane);
-		
-		txtTexto_1 = new JTextField();
-		txtTexto_1.setText("texto");
-		txtTexto_1.setBounds(171, 39, 86, 20);
-		desktopPane.add(txtTexto_1);
-		txtTexto_1.setColumns(10);
-		
-		JTextPane txtpnLibros = new JTextPane();
-		txtpnLibros.setText("Titulo del libro:");
-		txtpnLibros.setBounds(75, 39, 86, 20);
-		desktopPane.add(txtpnLibros);
-		
-		txtpnAutor = new JTextPane();
-		txtpnAutor.setText("Autor:");
-		txtpnAutor.setBounds(111, 70, 50, 20);
-		desktopPane.add(txtpnAutor);
-		
-		txtTexto_2 = new JTextField();
-		txtTexto_2.setText("texto");
-		txtTexto_2.setBounds(171, 70, 86, 20);
-		desktopPane.add(txtTexto_2);
-		txtTexto_2.setColumns(10);
-		
-		JCheckBox chckbxAmazon = new JCheckBox("Amazon");
-		chckbxAmazon.setBackground(Color.WHITE);
-		chckbxAmazon.setBounds(28, 170, 97, 23);
-		desktopPane.add(chckbxAmazon);
-		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("Fnac");
-		chckbxNewCheckBox.setBackground(Color.WHITE);
-		chckbxNewCheckBox.setBounds(28, 151, 97, 23);
-		desktopPane.add(chckbxNewCheckBox);
-		
-		chckbxNewCheckBox_1 = new JCheckBox("El Corte Inglés");
-		chckbxNewCheckBox_1.setBackground(Color.WHITE);
-		chckbxNewCheckBox_1.setForeground(Color.BLACK);
-		chckbxNewCheckBox_1.setBounds(28, 131, 97, 23);
-		desktopPane.add(chckbxNewCheckBox_1);
-		
+
 		JButton btnBuscar = new JButton("Buscar");
-		btnBuscar.setBounds(28, 214, 89, 23);
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnBuscar.setBounds(10, 227, 89, 23);
 		desktopPane.add(btnBuscar);
+		
+		String[] columnNames = {"First Name",
+                "Last Name",
+                "Sport",
+                "# of Years",
+                "Vegetarian"};
+		JTable table = new JTable(null, columnNames);
+		/*table.add
+		table.setBounds(10, 11, 403, 205);*/
+		desktopPane.add(table);
 	}
 }
