@@ -137,6 +137,9 @@ public class General {
 						Fnac fnac = new Fnac(Driver.driver);
 						misLibros.addAll(fnac.buscarLibro(titulo, autor));
 					}
+					
+					Listado window2 = new Listado(misLibros);
+					window2.frame.setVisible(true);
 
 				} else {
 					JOptionPane.showMessageDialog(null,
